@@ -1,6 +1,6 @@
 class NegativeTitlesError(Exception):
     def __init__(self):
-        self.message = "titles cannot be negative"
+        super().__init__("titles cannot be negative")
 
 
 class InvalidYearCupError(Exception):
