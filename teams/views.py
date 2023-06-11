@@ -28,7 +28,7 @@ class teamsView(APIView):
         return Response(team_dict, status.HTTP_201_CREATED)
 
 
-class TeamDetals(APIView):
+class teamDetals(APIView):
     def get(self, request: Request, team_id: int) -> Response:
         try:
             team = Team.objects.get(id=team_id)
