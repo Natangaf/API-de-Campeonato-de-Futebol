@@ -37,7 +37,7 @@ class teamDetals(APIView):
         team_dic = model_to_dict(team)
         return Response(team_dic, status.HTTP_200_OK)
 
-    def pach(self, request: Request, team_id: int) -> Response:
+    def patch(self, request: Request, team_id: int) -> Response:
         try:
             team = Team.objects.get(id=team_id)
         except Team.DoesNotExist:
