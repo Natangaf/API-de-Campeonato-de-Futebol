@@ -2,30 +2,26 @@ from teams.exceptions import NegativeTitlesError, InvalidYearCupError, Impossibl
 from datetime import datetime, timedelta
 
 
-def data_processing(selection_info):
-    titles = selection_info.get('titles')
-    first_cup = selection_info.get('first_cup')
+from datetime import datetime
+
+# Restante do código...
+
+def data_processing(data):
+    titles = data.get('titles')
+    first_cup = data.get('first_cup')
 
     if titles is not None and titles < 0:
         raise NegativeTitlesError()
 
     if first_cup is not None:
         try:
-            first_cup_date = datetime(first_cup, 1, 1)
+            first_cup_date = datetime.strptime(first_cup, "%Y-%m-%d")
         except ValueError:
             raise InvalidYearCupError()
 
-        current_year = datetime.now().year
-        expected_years = (current_year - first_cup) // 4 + 1
+        if first_cup_date.year < 1930 or (first_cup_date.year - 1930) % 4 != 0:
+            raise InvalidYearCupError()
+
+        expected_years = (datetime.now().year - first_cup_date.year) // 4 + 1
         if titles is not None and titles > expected_years:
             raise ImpossibleTitlesError()
-        
-data = {
-    "name": "França",
-    "titles": -3,
-    "top_scorer": "Zidane",
-    "fifa_code": "FRA",
-    "first_cup": "2000-10-18"
-}
-
-print(data_processing(data))
