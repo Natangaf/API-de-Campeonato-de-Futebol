@@ -1,105 +1,79 @@
-# M5 - Kopa do Mundo
+# API de Campeonato de Futebol
 
-## Como rodar os testes localmente
- - Verifique se os pacotes pytest e/ou pytest-testdox estão instalados globalmente em seu sistema:
-```shell
-pip list
-```
-- Caso seja listado o pytest e/ou pytest-testdox e/ou pytest-django em seu ambiente global, utilize os seguintes comando para desinstalá-los globalmente:
+## Introdução
 
-```shell
-pip uninstall pytest pytest-testdox -y
-```
----
+Você recebeu uma proposta de uma empresa que produz eventos esportivos, desenvolver uma API para organizar um campeonato de futebol, onde cada time representará uma seleção. Para manter o mínimo de organização, você vai precisar de algumas validações.
 
-## Próximos passos:
+O desenvolvimento do projeto será feito por etapas e em cada tarefa estarão descritas as regras de negócio e funcionalidades que devem ser implementadas, por isso, leia atentamente cada tarefa para não deixar passar nenhum detalhe.
 
-### 1. Crie seu ambiente virtual:
-```shell
-python -m venv venv
-```
+## Rotas
 
-### 2. Ative seu venv:
+A seguir, estão listadas as principais rotas disponíveis na API:
 
-```shell
-# Linux:
-source venv/bin/activate
+### 1. Cadastrar seleção
 
-# Windows (PowerShell):
-.\venv\Scripts\activate
+- **Endpoint:** `api/teams/`
+- **Verbo HTTP:** POST
+- **Objetivo:** Cadastrar uma nova seleção (time) no campeonato.
 
-# Windows (GitBash):
-source venv/Scripts/activate
-```
+### 2. Listar seleções
 
+- **Endpoint:** `api/teams/`
+- **Verbo HTTP:** GET
+- **Objetivo:** Obter a lista de todas as seleções cadastradas no campeonato.
 
-### 3. Instalar o pacote <strong>pytest-testdox</strong>:
+### 3. Filtragem de seleção
 
-```shell
-pip install pytest-testdox pytest-django
-```
+- **Endpoint:** `api/teams/<team_id>/`
+- **Verbo HTTP:** GET
+- **Objetivo:** Obter detalhes de uma seleção específica com base no seu ID.
 
+### 4. Atualização de seleção
 
-### 4. Rodar os testes referentes a cada tarefa isoladamente:
+- **Endpoint:** `api/teams/<team_id>/`
+- **Verbo HTTP:** PATCH
+- **Objetivo:** Atualizar informações de uma seleção específica com base no seu ID.
 
-Exemplo:
+### 5. Deleção de seleção
 
-- Tarefa 1
+- **Endpoint:** `api/teams/<team_id>/`
+- **Verbo HTTP:** DELETE
+- **Objetivo:** Excluir uma seleção específica com base no seu ID.
 
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_1/
-```
+## Desenvolvimento do Projeto
 
----
+O desenvolvimento deste projeto será feito em etapas, e cada tarefa virá acompanhada de regras de negócio e funcionalidades que devem ser implementadas. É importante ler atentamente cada tarefa para garantir que todos os detalhes sejam considerados.
 
-## Execução de testes a partir da tarefa 2
-A partir de agora, para os testes das tarefas 2, 3 e 4, já que começaremos a usar o Django, precisaremos de um arquivo **pytest.ini**, você **DEVE** cria-lo na raiz do projeto, depois de criar esse aquivo você precisa adicionar nele a seguinte configuração:
+## Instruções de Uso
 
-```python
-[pytest]
-DJANGO_SETTINGS_MODULE = kopa_do_mundo.settings
-```
+Aqui serão fornecidas instruções para executar a API localmente ou em um servidor.
 
-Após isso, você pode executar os comandos abaixo para rodar os testes:
-- Tarefa 1
+## Tecnologias Utilizadas
 
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_1/
-```
+Nesta API, foram utilizadas as seguintes tecnologias:
 
-- Tarefa 2
+- Linguagem de programação: [inserir linguagem aqui]
+- Framework: [inserir framework aqui]
+- Banco de dados: [inserir banco de dados aqui]
+- Outras bibliotecas e ferramentas: [listar outras bibliotecas e ferramentas utilizadas]
 
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_2/
-```
+## Como Contribuir
 
-- Tarefa 3
+Se você deseja contribuir com o desenvolvimento deste projeto, siga os passos abaixo:
 
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_3/
-```
+1. Faça um fork deste repositório.
+2. Crie um branch para a sua feature (`git checkout -b feature/nova-feature`).
+3. Faça as alterações desejadas no código.
+4. Commit suas alterações (`git commit -m 'Adicionar nova feature'`).
+5. Envie o branch para o repositório remoto (`git push origin feature/nova-feature`).
+6. Abra um Pull Request descrevendo as alterações propostas.
 
-- Tarefa 4
+## Contato
 
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_4/
-```
+Em caso de dúvidas ou sugestões, entre em contato:
 
----
+- Nome: Natã Lomeu Fernandes
+- Email: natanf1ernandes@gmail.com
+  
 
-Você também pode rodar cada método de teste isoladamente:
-
-```shell
-pytest --testdox -vvs caminho/para/o/arquivo/de/teste::NomeDaClasse::nome_do_metodo_de_teste
-```
-
-Exemplo: executar somente "test_object_representation"
-
-```shell
-pytest --testdox -vvs tests/tarefas/tarefa_1/test_model.py::TeamModelTest::test_object_representation
-```
-
-Caso queira, também é possível rodar todos os testes de uma vez:
-```shell
-pytest --testdox -vvs
-```
+Obrigado por fazer parte deste projeto! Vamos criar juntos um campeonato de futebol emocionante! 🏆⚽️
